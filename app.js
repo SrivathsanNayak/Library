@@ -1,4 +1,5 @@
 /*
+    //Constructor function for Book
     function Book (title, author, pages, read) {
         this.title = title;
         this.author = author;
@@ -10,6 +11,7 @@
         }
     }
 
+    //Calling constructor function to create Book
     const theHobbit = new Book('The Hobbit', 'JRR Tolkien', 295, 'read');
     console.log(theHobbit.info());
 */
