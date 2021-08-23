@@ -4,6 +4,8 @@ let currentBookPointer = 0;
 //Array to store new book objects
 let myLibrary = [];
 
+document.getElementById("new-book").addEventListener("click",addBookToLibrary);
+
 //Constructor function to create new book object
 function Book(title, author, pages, read) {
     this.title = title;
@@ -51,10 +53,6 @@ function printBookInLibrary() {
 
     currentBookPointer++;
 }
-
-addBookToLibrary();
-addBookToLibrary();
-addBookToLibrary();
 
 //Add rating system in library
 //Allow dragging & reordering of book cards
