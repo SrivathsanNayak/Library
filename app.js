@@ -55,3 +55,8 @@ function printBookInLibrary() {
 addBookToLibrary();
 addBookToLibrary();
 addBookToLibrary();
+
+//Add rating system in library
+//Allow dragging & reordering of book cards
+//Allow creation of folders/directories
+//Add dark mode
