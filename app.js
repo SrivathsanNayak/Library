@@ -21,9 +21,15 @@ function addBookToLibrary() {
 }
 
 function printBookInLibrary() {
-    console.table(myLibrary);
+    //console.table(myLibrary);
+    for (let i = 0; i < myLibrary.length; i++) {
+        document.getElementById("title").textContent += myLibrary[i]['title'];
+        document.getElementById("author").textContent += myLibrary[i]['author'];
+        document.getElementById("pages").textContent += myLibrary[i]['pages'];
+        document.getElementById("read").textContent += myLibrary[i]['read'];
+    }
 }
 
 addBookToLibrary();
-addBookToLibrary();
-addBookToLibrary();
+/*addBookToLibrary();
+addBookToLibrary();*/
