@@ -1,3 +1,4 @@
+//Variable to store current book number
 let currentBookPointer = 0;
 
 //Array to store new book objects
@@ -22,6 +23,7 @@ function addBookToLibrary() {
     printBookInLibrary();
 }
 
+//Function to add book card in webpage
 function printBookInLibrary() {
     const div = document.createElement("div");
     div.classList.add("book-card");
