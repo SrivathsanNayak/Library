@@ -4,7 +4,7 @@ let currentBookPointer = 0;
 //Array to store new book objects
 let myLibrary = [];
 
-document.getElementById("new-book").addEventListener("click",addBookToLibrary);
+document.getElementById("new-book").addEventListener("click", BookDetailsForm);
 
 //Constructor function to create new book object
 function Book(title, author, pages, read) {
@@ -16,13 +16,65 @@ function Book(title, author, pages, read) {
 
 //Function to add book object to library
 function addBookToLibrary() {
-    let title = prompt("Title of book?", "The Hobbit");
-    let author = prompt("Name of author of book?", "JRR Tolkien");
-    let pages = prompt("Number of pages?", 295);
-    let read = prompt("Read or not read?", "read");
+    let title = document.getElementById("form-title").value;
+    let author = document.getElementById("form-author").value;
+    let pages = document.getElementById("form-pages").value;
+    let read = document.getElementById("form-read").value;
     const obj = new Book(title, author, pages, read);
     myLibrary.push(obj);
     printBookInLibrary();
+}
+
+//Function to create form dynamically
+function BookDetailsForm() {
+    let br = document.createElement("br");
+    let form = document.createElement("form");
+
+    let title = document.createElement("input");
+    title.setAttribute("type", "text");
+    title.setAttribute("id", "form-title");
+    title.setAttribute("name", "form-title");
+    title.setAttribute("placeholder", "Title of Book");
+
+    let author = document.createElement("input");
+    author.setAttribute("type", "text");
+    author.setAttribute("id", "form-author");
+    author.setAttribute("name", "form-author");
+    author.setAttribute("placeholder", "Name of Author");
+
+    let pages = document.createElement("input");
+    pages.setAttribute("type", "number");
+    pages.setAttribute("id", "form-pages");
+    pages.setAttribute("name", "form-pages");
+    pages.setAttribute("min", "0");
+    pages.setAttribute("placeholder", "No. of pages");
+
+    let read = document.createElement("input");
+    read.setAttribute("type", "checkbox");
+    read.setAttribute("id", "form-read");
+    read.setAttribute("name", "form-read");
+
+    let labelRead = document.createElement("label");
+    labelRead.setAttribute("for", "form-read");
+    labelRead.textContent = "Book read";
+
+    let submitButton = document.createElement("input");
+    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("value", "Submit");
+    submitButton.addEventListener("click", addBookToLibrary);
+
+    form.appendChild(title);
+    form.appendChild(br.cloneNode());
+    form.appendChild(author);
+    form.appendChild(br.cloneNode());
+    form.appendChild(pages);
+    form.appendChild(br.cloneNode());
+    form.appendChild(read);
+    form.appendChild(labelRead);
+    form.appendChild(br.cloneNode());
+    form.appendChild(br.cloneNode());
+    form.appendChild(submitButton);
+    document.querySelector("#form").appendChild(form);
 }
 
 //Function to add book card in webpage
@@ -58,3 +110,4 @@ function printBookInLibrary() {
 //Allow dragging & reordering of book cards
 //Allow creation of folders/directories
 //Add dark mode
+//Check overflow inside form
