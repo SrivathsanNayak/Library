@@ -1,9 +1,10 @@
-h3 {
+.title {
     font-size: 1.5rem;
+    font-weight: bold;
     padding: 1rem 0;
 }
 
-p {
+.author, .pages, .read {
     font-size: 1.25rem;
     padding: 1rem 0;
 }

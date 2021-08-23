@@ -1,3 +1,5 @@
+let currentBookPointer = 0;
+
 //Array to store new book objects
 let myLibrary = [];
 
@@ -21,15 +23,33 @@ function addBookToLibrary() {
 }
 
 function printBookInLibrary() {
-    //console.table(myLibrary);
-    for (let i = 0; i < myLibrary.length; i++) {
-        document.getElementById("title").textContent += myLibrary[i]['title'];
-        document.getElementById("author").textContent += myLibrary[i]['author'];
-        document.getElementById("pages").textContent += myLibrary[i]['pages'];
-        document.getElementById("read").textContent += myLibrary[i]['read'];
-    }
+    const div = document.createElement("div");
+    div.classList.add("book-card");
+    document.getElementById("books-container").appendChild(div);
+
+    const title = document.createElement("p");
+    title.classList.add("title");
+    title.textContent += myLibrary[currentBookPointer]["title"];
+    div.appendChild(title);
+
+    const author = document.createElement("p");
+    author.classList.add("author");
+    author.textContent += myLibrary[currentBookPointer]["author"];
+    div.appendChild(author);
+
+    const pages = document.createElement("p");
+    pages.classList.add("pages");
+    pages.textContent += myLibrary[currentBookPointer]["pages"];
+    div.appendChild(pages);
+
+    const read = document.createElement("p");
+    read.classList.add("read");
+    read.textContent += myLibrary[currentBookPointer]["read"];
+    div.appendChild(read);
+
+    currentBookPointer++;
 }
 
 addBookToLibrary();
-/*addBookToLibrary();
-addBookToLibrary();*/
+addBookToLibrary();
+addBookToLibrary();
