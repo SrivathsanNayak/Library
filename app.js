@@ -19,7 +19,7 @@ function addBookToLibrary() {
     let title = document.getElementById("form-title").value;
     let author = document.getElementById("form-author").value;
     let pages = document.getElementById("form-pages").value;
-    let read = document.getElementById("form-read").value;
+    let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
     const obj = new Book(title, author, pages, read);
     myLibrary.push(obj);
     printBookInLibrary();
@@ -53,6 +53,7 @@ function bookDetailsForm() {
     read.setAttribute("type", "checkbox");
     read.setAttribute("id", "form-read");
     read.setAttribute("name", "form-read");
+    read.setAttribute("checked", "checked");
 
     let labelRead = document.createElement("label");
     labelRead.setAttribute("for", "form-read");
