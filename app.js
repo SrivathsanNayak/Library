@@ -4,7 +4,7 @@ let currentBookPointer = 0;
 //Array to store new book objects
 let myLibrary = [];
 
-document.getElementById("new-book").addEventListener("click", BookDetailsForm);
+document.getElementById("new-book").addEventListener("click", bookDetailsForm);
 
 //Constructor function to create new book object
 function Book(title, author, pages, read) {
@@ -26,7 +26,7 @@ function addBookToLibrary() {
 }
 
 //Function to create form dynamically
-function BookDetailsForm() {
+function bookDetailsForm() {
     let br = document.createElement("br");
     let form = document.createElement("form");
 
@@ -59,9 +59,8 @@ function BookDetailsForm() {
     labelRead.textContent = "Book read";
 
     let submitButton = document.createElement("input");
-    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("type", "button");
     submitButton.setAttribute("value", "Submit");
-    submitButton.addEventListener("click", addBookToLibrary);
 
     form.appendChild(title);
     form.appendChild(br.cloneNode());
@@ -74,7 +73,13 @@ function BookDetailsForm() {
     form.appendChild(br.cloneNode());
     form.appendChild(br.cloneNode());
     form.appendChild(submitButton);
-    document.querySelector("#form").appendChild(form);
+    document.getElementById("form-container").appendChild(form);
+
+    submitButton.addEventListener("click", () => {
+        //document.getElementById("form-container").style.display = "none";
+        addBookToLibrary();
+        document.getElementById("form-container").removeChild(form);
+    });
 }
 
 //Function to add book card in webpage
