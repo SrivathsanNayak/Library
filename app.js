@@ -1,5 +1,6 @@
 //Variable to store current book number
 let currentBookPointer = 0;
+let isFormAdded = false;
 
 //Array to store new book objects
 let myLibrary = [];
@@ -74,12 +75,17 @@ function bookDetailsForm() {
     form.appendChild(br.cloneNode());
     form.appendChild(br.cloneNode());
     form.appendChild(submitButton);
-    document.getElementById("form-container").appendChild(form);
+
+    if (!isFormAdded) {
+        document.getElementById("form-container").appendChild(form);
+        isFormAdded = true;
+    }
 
     submitButton.addEventListener("click", () => {
         //document.getElementById("form-container").style.display = "none";
         addBookToLibrary();
         document.getElementById("form-container").removeChild(form);
+        isFormAdded = false;
     });
 }
 
