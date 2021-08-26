@@ -47,7 +47,7 @@ function bookDetailsForm() {
     pages.setAttribute("type", "number");
     pages.setAttribute("id", "form-pages");
     pages.setAttribute("name", "form-pages");
-    pages.setAttribute("min", "0");
+    //pages.setAttribute("min", "0");
     pages.setAttribute("placeholder", "No. of pages");
 
     let read = document.createElement("input");
@@ -81,11 +81,26 @@ function bookDetailsForm() {
         isFormAdded = true;
     }
 
+    //Function for form validation
     submitButton.addEventListener("click", () => {
-        //document.getElementById("form-container").style.display = "none";
-        addBookToLibrary();
-        document.getElementById("form-container").removeChild(form);
-        isFormAdded = false;
+        let flag = true;
+        if (document.getElementById("form-title").value == "") {
+            alert("Please enter a valid title");
+            flag = false;
+        }
+        if (document.getElementById("form-author").value == "" || !(document.getElementById("form-author").value.match(/[a-zA-Z]/))) {
+            alert("Please enter a valid name");
+            flag = false;
+        }
+        if (document.getElementById("form-pages").value < 1 || document.getElementById("form-pages").value % 1 !== 0 || document.getElementById("form-pages").value == "") {
+            alert("Please enter a valid number");
+            flag = false;
+        }
+        if (flag) {
+            addBookToLibrary();
+            document.getElementById("form-container").removeChild(form);
+            isFormAdded = false;
+        }
     });
 }
 
