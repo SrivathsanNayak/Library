@@ -15,17 +15,6 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-//Function to add book object to library
-function addBookToLibrary() {
-    let title = document.getElementById("form-title").value;
-    let author = document.getElementById("form-author").value;
-    let pages = document.getElementById("form-pages").value;
-    let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
-    const obj = new Book(title, author, pages, read);
-    myLibrary.push(obj);
-    printBookInLibrary();
-}
-
 //Function to create form dynamically
 function bookDetailsForm() {
     let br = document.createElement("br");
@@ -62,7 +51,7 @@ function bookDetailsForm() {
 
     let submitButton = document.createElement("input");
     submitButton.setAttribute("type", "button");
-    submitButton.setAttribute("value", "Submit");
+    submitButton.setAttribute("value", "Submit book");
 
     form.appendChild(title);
     form.appendChild(br.cloneNode());
@@ -104,6 +93,23 @@ function bookDetailsForm() {
     });
 }
 
+//Function to add book object to library
+function addBookToLibrary() {
+    let title = document.getElementById("form-title").value;
+    let author = document.getElementById("form-author").value;
+    let pages = document.getElementById("form-pages").value;
+    let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
+    const obj = new Book(title, author, pages, read);
+    myLibrary.push(obj);
+    for (let i = currentBookPointer; i < myLibrary.length; i++) {
+        console.log(myLibrary[i]["title"]);
+        console.log(myLibrary[i]["author"]);
+        console.log(myLibrary[i]["pages"]);
+        console.log(myLibrary[i]["read"]);
+    }
+    printBookInLibrary();
+}
+
 //Function to add book card in webpage
 function printBookInLibrary() {
     const div = document.createElement("div");
@@ -129,12 +135,21 @@ function printBookInLibrary() {
     read.classList.add("read");
     read.textContent += myLibrary[currentBookPointer]["read"];
     div.appendChild(read);
-
+    /*
+    const removeButton = document.createElement("input");
+    removeButton.setAttribute("type", "button");
+    removeButton.setAttribute("value", "Remove book");
+    div.appendChild(removeButton);
+    */
     currentBookPointer++;
 }
 
+//Add read toggle in book card
+//Add delete button with alert in book card
 //Add rating system in library
+//Add book number
 //Allow dragging & reordering of book cards
 //Allow creation of folders/directories
 //Add dark mode
+//Add cancel button in form
 //Check overflow inside form
