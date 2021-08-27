@@ -1,11 +1,6 @@
-.title {
-    font-size: 1.5rem;
+.card-heading {
+    font-size: 1.3rem;
     font-weight: bold;
-    padding: 1rem 0;
-}
-
-.author, .pages, .read {
-    font-size: 1.25rem;
     padding: 1rem 0;
 }
 

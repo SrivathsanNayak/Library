@@ -191,7 +191,34 @@ function addBookToLibrary() {
     let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
     const obj = new Book(title, author, pages, read);
     myLibrary.push(obj);
-    console.log(myLibrary);
+    printBook();
+}
+
+function printBook() {
+    const divCard = document.createElement("div");
+    const titleCard = document.createElement("h3");
+    const authorCard = document.createElement("h4");
+    const pagesCard = document.createElement("h4");
+    const readCard = document.createElement("h4");
+
+    divCard.classList.add("book-card");
+    titleCard.classList.add("card-heading");
+    authorCard.classList.add("card-heading");
+    pagesCard.classList.add("card-heading");
+    readCard.classList.add("card-heading");
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        titleCard.textContent = myLibrary[i]["title"];
+        authorCard.textContent = myLibrary[i]["author"];
+        pagesCard.textContent = myLibrary[i]["pages"];
+        readCard.textContent = myLibrary[i]["read"];
+
+        document.getElementById("books-container").appendChild(divCard);
+        divCard.appendChild(titleCard);
+        divCard.appendChild(authorCard);
+        divCard.appendChild(pagesCard);
+        divCard.appendChild(readCard);
+    }
 }
 
 //Add read toggle in book card
