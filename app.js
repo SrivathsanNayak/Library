@@ -1,3 +1,4 @@
+/*
 //Variable to store current book number
 let currentBookPointer = 0;
 let isFormAdded = false;
@@ -135,13 +136,35 @@ function printBookInLibrary() {
     read.classList.add("read");
     read.textContent += myLibrary[currentBookPointer]["read"];
     div.appendChild(read);
-    /*
+    currentBookPointer++;
+}
+*/
+
+/*
     const removeButton = document.createElement("input");
     removeButton.setAttribute("type", "button");
     removeButton.setAttribute("value", "Remove book");
     div.appendChild(removeButton);
-    */
-    currentBookPointer++;
+*/
+
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+}
+
+document.getElementById("new-book").addEventListener("click", formOn);
+document.getElementById("submit-book").addEventListener("click", formOff);
+
+function formOn() {
+    document.getElementById("form-container").style.display = "block";
+}
+
+function formOff() {
+    document.getElementById("form-container").style.display = "none";
 }
 
 //Add read toggle in book card
