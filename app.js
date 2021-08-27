@@ -164,7 +164,30 @@ function formOn() {
 }
 
 function formOff() {
-    document.getElementById("form-container").style.display = "none";
+    let flag = true;
+    if (document.getElementById("form-title").value == "") {
+        alert("Please enter a valid title");
+        flag = false;
+    }
+    if (document.getElementById("form-author").value == "" || !(document.getElementById("form-author").value.match(/[a-zA-Z]/))) {
+        alert("Please enter a valid name");
+        flag = false;
+    }
+    if (document.getElementById("form-pages").value < 1 || document.getElementById("form-pages").value % 1 !== 0 || document.getElementById("form-pages").value == "") {
+        alert("Please enter a valid number");
+        flag = false;
+    }
+    if (flag) {
+        addBookToLibrary();
+        document.getElementById("form-container").style.display = "none";
+    }
+}
+
+function addBookToLibrary() {
+    let title = document.getElementById("form-title").value;
+    let author = document.getElementById("form-author").value;
+    let pages = document.getElementById("form-pages").value;
+    let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
 }
 
 //Add read toggle in book card
