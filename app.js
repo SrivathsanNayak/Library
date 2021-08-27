@@ -179,6 +179,7 @@ function formOff() {
     }
     if (flag) {
         addBookToLibrary();
+        document.querySelector("form").reset();
         document.getElementById("form-container").style.display = "none";
     }
 }
@@ -188,6 +189,9 @@ function addBookToLibrary() {
     let author = document.getElementById("form-author").value;
     let pages = document.getElementById("form-pages").value;
     let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
+    const obj = new Book(title, author, pages, read);
+    myLibrary.push(obj);
+    console.log(myLibrary);
 }
 
 //Add read toggle in book card
