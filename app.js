@@ -50,31 +50,30 @@ function printBook() {
     const titleCard = document.createElement("h3");
     const authorCard = document.createElement("h4");
     const pagesCard = document.createElement("h4");
-    const readCard = document.createElement("h4");
+    const readToggle = document.createElement("button");
 
     divCard.classList.add("book-card");
     titleCard.classList.add("card-heading");
     authorCard.classList.add("card-heading");
     pagesCard.classList.add("card-heading");
-    readCard.classList.add("card-heading");
 
     for (let i = 0; i < myLibrary.length; i++) {
         titleCard.textContent = myLibrary[i]["title"];
         authorCard.textContent = myLibrary[i]["author"];
         pagesCard.textContent = myLibrary[i]["pages"];
-        readCard.textContent = myLibrary[i]["read"];
+        readToggle.textContent = myLibrary[i]["read"];
 
         document.getElementById("books-container").appendChild(divCard);
         divCard.appendChild(titleCard);
         divCard.appendChild(authorCard);
         divCard.appendChild(pagesCard);
-        divCard.appendChild(readCard);
+        divCard.appendChild(readToggle);
     }
 }
 
 //Add read toggle in book card
 //Add delete button with alert in book card
-//Add rating system in library
+//Add rating system in library or favourites
 //Add book number
 //Allow dragging & reordering of book cards
 //Allow creation of folders/directories
