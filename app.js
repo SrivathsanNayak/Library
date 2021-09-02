@@ -45,12 +45,15 @@ function addBookToLibrary() {
     printBook();
 }
 
+//make printBook variables and divs and headings as global variables
 function printBook() {
     const divCard = document.createElement("div");
     const titleCard = document.createElement("h3");
     const authorCard = document.createElement("h4");
     const pagesCard = document.createElement("h4");
     const readToggle = document.createElement("button");
+    const deleteButton = document.createElement("button");
+    //readToggle.addEventListener("click", changeRead);
 
     divCard.classList.add("book-card");
     titleCard.classList.add("card-heading");
@@ -58,18 +61,45 @@ function printBook() {
     pagesCard.classList.add("card-heading");
 
     for (let i = 0; i < myLibrary.length; i++) {
+        flag = false;
         titleCard.textContent = myLibrary[i]["title"];
         authorCard.textContent = myLibrary[i]["author"];
         pagesCard.textContent = myLibrary[i]["pages"];
         readToggle.textContent = myLibrary[i]["read"];
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click", () => {
+            flag = true;
+            console.log("bruh");
+        });
 
         document.getElementById("books-container").appendChild(divCard);
         divCard.appendChild(titleCard);
         divCard.appendChild(authorCard);
         divCard.appendChild(pagesCard);
         divCard.appendChild(readToggle);
+        divCard.appendChild(deleteButton);
+
+        if (flag) {
+            myLibrary.splice(i, 1);
+            document.getElementById("books-container").removeChild(divCard);
+        }
+        console.log(myLibrary);
     }
+
 }
+
+/*
+function changeRead() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i]["read"] == "Read") {
+            myLibrary[i]["read"] = "Not read";
+        } else {
+            myLibrary[i]["read"] = "Read";
+        }
+    }
+    printBook();
+}*/
 
 //Add read toggle in book card
 //Add delete button with alert in book card
