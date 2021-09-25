@@ -45,46 +45,66 @@ function addBookToLibrary() {
     printBook();
 }
 
-//make printBook variables and divs and headings as global variables
-function printBook() {
+function createCard(title, author, pages, read, deleted) {
     const divCard = document.createElement("div");
     const titleCard = document.createElement("h3");
     const authorCard = document.createElement("h4");
     const pagesCard = document.createElement("h4");
     const readToggle = document.createElement("button");
     const deleteButton = document.createElement("button");
-    //readToggle.addEventListener("click", changeRead);
 
     divCard.classList.add("book-card");
     titleCard.classList.add("card-heading");
     authorCard.classList.add("card-heading");
     pagesCard.classList.add("card-heading");
 
+    titleCard.textContent = title;
+    authorCard.textContent = author;
+    pagesCard.textContent = pages;
+    readToggle.textContent = read;
+    deleteButton.textContent = "Delete";
+
+    document.getElementById("books-container").appendChild(divCard);
+    divCard.appendChild(titleCard);
+    divCard.appendChild(authorCard);
+    divCard.appendChild(pagesCard);
+    divCard.appendChild(readToggle);
+    divCard.appendChild(deleteButton);
+}
+
+function printBook() {
+    //Fresh render of book cards
+    while (document.getElementById("books-container").firstChild) {
+        console.log(document.getElementById("books-container").textContent);
+        document.getElementById("books-container").textContent = '';
+    }    
+
     for (let i = 0; i < myLibrary.length; i++) {
-        flag = false;
-        titleCard.textContent = myLibrary[i]["title"];
+        //deleted = false;
+        /*titleCard.textContent = myLibrary[i]["title"];
         authorCard.textContent = myLibrary[i]["author"];
         pagesCard.textContent = myLibrary[i]["pages"];
         readToggle.textContent = myLibrary[i]["read"];
-        deleteButton.textContent = "Delete";
+        deleteButton.textContent = "Delete";*/
+        createCard(myLibrary[i]["title"], myLibrary[i]["author"], myLibrary[i]["pages"], myLibrary[i]["read"], false);
 
-        deleteButton.addEventListener("click", () => {
-            flag = true;
+        /*deleteButton.addEventListener("click", () => {
+            deleted = true;
             console.log("bruh");
-        });
+        });*/
 
-        document.getElementById("books-container").appendChild(divCard);
+        /*document.getElementById("books-container").appendChild(divCard);
         divCard.appendChild(titleCard);
         divCard.appendChild(authorCard);
         divCard.appendChild(pagesCard);
         divCard.appendChild(readToggle);
-        divCard.appendChild(deleteButton);
+        divCard.appendChild(deleteButton);*/
 
-        if (flag) {
+        /*if (deleted) {
             myLibrary.splice(i, 1);
             document.getElementById("books-container").removeChild(divCard);
         }
-        console.log(myLibrary);
+        console.log(myLibrary);*/
     }
 
 }
