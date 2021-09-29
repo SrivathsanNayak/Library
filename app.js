@@ -17,15 +17,15 @@ function formOn() {
 function formOff() {
     let flag = true;
     if (document.getElementById("form-title").value == "") {
-        alert("Please enter a valid title");
+        alert("Please enter a valid book title");
         flag = false;
     }
     if (document.getElementById("form-author").value == "" || !(document.getElementById("form-author").value.match(/[a-zA-Z]/))) {
-        alert("Please enter a valid name");
+        alert("Please enter a valid author name");
         flag = false;
     }
     if (document.getElementById("form-pages").value < 1 || document.getElementById("form-pages").value % 1 !== 0 || document.getElementById("form-pages").value == "") {
-        alert("Please enter a valid number");
+        alert("Please enter a valid number of pages");
         flag = false;
     }
     if (flag) {
