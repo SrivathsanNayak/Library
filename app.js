@@ -70,56 +70,30 @@ function createCard(title, author, pages, read, deleted) {
     divCard.appendChild(pagesCard);
     divCard.appendChild(readToggle);
     divCard.appendChild(deleteButton);
+
+    readToggle.addEventListener("click", changeRead);
+
+    function changeRead() {
+        this.textContent = (this.textContent == "Read") ? "Not read" : "Read";
+        
+        //Change read value in array using array.find()
+        let book = myLibrary.find(o => (o.title === title && o.author === author && o.pages === pages));
+        let index = myLibrary.indexOf(book);
+        myLibrary[index] = {title, author, pages, read: this.textContent};
+        printBook();
+    }
 }
 
 function printBook() {
     //Fresh render of book cards
     while (document.getElementById("books-container").firstChild) {
-        console.log(document.getElementById("books-container").textContent);
         document.getElementById("books-container").textContent = '';
-    }    
+    } 
 
     for (let i = 0; i < myLibrary.length; i++) {
-        //deleted = false;
-        /*titleCard.textContent = myLibrary[i]["title"];
-        authorCard.textContent = myLibrary[i]["author"];
-        pagesCard.textContent = myLibrary[i]["pages"];
-        readToggle.textContent = myLibrary[i]["read"];
-        deleteButton.textContent = "Delete";*/
         createCard(myLibrary[i]["title"], myLibrary[i]["author"], myLibrary[i]["pages"], myLibrary[i]["read"], false);
-
-        /*deleteButton.addEventListener("click", () => {
-            deleted = true;
-            console.log("bruh");
-        });*/
-
-        /*document.getElementById("books-container").appendChild(divCard);
-        divCard.appendChild(titleCard);
-        divCard.appendChild(authorCard);
-        divCard.appendChild(pagesCard);
-        divCard.appendChild(readToggle);
-        divCard.appendChild(deleteButton);*/
-
-        /*if (deleted) {
-            myLibrary.splice(i, 1);
-            document.getElementById("books-container").removeChild(divCard);
-        }
-        console.log(myLibrary);*/
     }
-
 }
-
-/*
-function changeRead() {
-    for (let i = 0; i < myLibrary.length; i++) {
-        if (myLibrary[i]["read"] == "Read") {
-            myLibrary[i]["read"] = "Not read";
-        } else {
-            myLibrary[i]["read"] = "Read";
-        }
-    }
-    printBook();
-}*/
 
 //Add read toggle in book card
 //Add delete button with alert in book card
