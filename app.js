@@ -72,14 +72,24 @@ function createCard(title, author, pages, read, deleted) {
     divCard.appendChild(deleteButton);
 
     readToggle.addEventListener("click", changeRead);
+    deleteButton.addEventListener("click", deleteBook);
 
     function changeRead() {
         this.textContent = (this.textContent == "Read") ? "Not read" : "Read";
-        
+
         //Change read value in array using array.find()
         let book = myLibrary.find(o => (o.title === title && o.author === author && o.pages === pages));
         let index = myLibrary.indexOf(book);
-        myLibrary[index] = {title, author, pages, read: this.textContent};
+        myLibrary[index] = { title, author, pages, read: this.textContent };
+        printBook();
+    }
+
+    function deleteBook() {
+        if (confirm("Are you sure you want to delete \"" + title + "\"")) {
+            let book = myLibrary.find(o => (o.title === title && o.author === author && o.pages === pages));
+            let index = myLibrary.indexOf(book);
+            myLibrary.splice(index, 1);
+        }
         printBook();
     }
 }
@@ -88,17 +98,14 @@ function printBook() {
     //Fresh render of book cards
     while (document.getElementById("books-container").firstChild) {
         document.getElementById("books-container").textContent = '';
-    } 
+    }
 
     for (let i = 0; i < myLibrary.length; i++) {
         createCard(myLibrary[i]["title"], myLibrary[i]["author"], myLibrary[i]["pages"], myLibrary[i]["read"], false);
     }
 }
 
-//Add read toggle in book card
-//Add delete button with alert in book card
 //Add rating system in library or favourites
-//Add book number
 //Allow dragging & reordering of book cards
 //Allow creation of folders/directories
 //Add dark mode
