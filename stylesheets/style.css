@@ -125,3 +125,17 @@ input {
     color: #B61919;
     background-color: #FFBCBC;
 }
+
+@media screen and (max-width: 992px) {
+    .book-card {
+        width: 10rem;
+    }
+
+    .card-heading {
+        font-size: 0.9rem;
+    }
+
+    form {
+        font-size: 1.5rem;
+    }
+}
