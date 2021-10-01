@@ -57,12 +57,13 @@ function createCard(title, author, pages, read, deleted) {
     authorCard.textContent = author;
     pagesCard.textContent = pages;
     readToggle.textContent = read;
-    deleteButton.textContent = "Delete";
+    deleteButton.textContent = "DELETE";
 
     divCard.classList.add("book-card");
     titleCard.classList.add("card-heading");
     authorCard.classList.add("card-heading");
     pagesCard.classList.add("card-heading");
+    deleteButton.classList.add("delete-button");
 
     if (readToggle.textContent == "Read") {
         readToggle.classList.add("read-button");
@@ -112,3 +113,4 @@ function printBook() {
 }
 
 //Check overflow inside form
+//Hover over button to show description

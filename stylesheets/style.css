@@ -93,3 +93,18 @@ input {
     background: #FF5C58;
     color: #fff;
 }
+
+.delete-button {
+    font-weight: 700;
+    margin: 0.5rem 1rem;
+    padding: 10px 8px;
+    color: #DF2E2E;
+    border: dashed 1px #DF2E2E;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.delete-button:hover {
+    color: #B61919;
+    background-color: #FFBCBC;
+}
