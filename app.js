@@ -111,9 +111,4 @@ function printBook() {
     }
 }
 
-//Add rating system in library or favourites
-//Allow dragging & reordering of book cards
-//Allow creation of folders/directories
-//Add dark mode
-//Add cancel button in form
 //Check overflow inside form
