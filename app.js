@@ -53,9 +53,9 @@ function createCard(title, author, pages, read, deleted) {
     const readToggle = document.createElement("button");
     const deleteButton = document.createElement("button");
 
-    titleCard.textContent = title;
-    authorCard.textContent = author;
-    pagesCard.textContent = pages;
+    titleCard.textContent = "Title: "+ title;
+    authorCard.textContent = "Author: " + author;
+    pagesCard.textContent = "Pages: " + pages;
     readToggle.textContent = read;
     deleteButton.textContent = "DELETE";
 
