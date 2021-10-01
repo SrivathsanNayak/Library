@@ -111,6 +111,6 @@ function printBook() {
         createCard(myLibrary[i]["title"], myLibrary[i]["author"], myLibrary[i]["pages"], myLibrary[i]["read"], false);
     }
 }
-
+//Edit new book button
 //Check overflow inside form
 //Hover over button to show description
