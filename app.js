@@ -59,6 +59,9 @@ function createCard(title, author, pages, read, deleted) {
     readToggle.textContent = read;
     deleteButton.textContent = "DELETE";
 
+    readToggle.setAttribute("title", "Mark book as read or unread");
+    deleteButton.setAttribute("title", "Remove book from library");
+
     divCard.classList.add("book-card");
     titleCard.classList.add("card-heading");
     authorCard.classList.add("card-heading");
@@ -111,6 +114,3 @@ function printBook() {
         createCard(myLibrary[i]["title"], myLibrary[i]["author"], myLibrary[i]["pages"], myLibrary[i]["read"], false);
     }
 }
-//Edit new book button
-//Check overflow inside form
-//Hover over button to show description
