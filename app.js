@@ -39,7 +39,7 @@ function addBookToLibrary() {
     let title = document.getElementById("form-title").value;
     let author = document.getElementById("form-author").value;
     let pages = document.getElementById("form-pages").value;
-    let read = (document.getElementById("form-read").checked ? "Read" : "Not read");
+    let read = (document.getElementById("form-read").checked ? "Read" : "Unread");
     const obj = new Book(title, author, pages, read);
     myLibrary.push(obj);
     printBook();
@@ -53,16 +53,22 @@ function createCard(title, author, pages, read, deleted) {
     const readToggle = document.createElement("button");
     const deleteButton = document.createElement("button");
 
-    divCard.classList.add("book-card");
-    titleCard.classList.add("card-heading");
-    authorCard.classList.add("card-heading");
-    pagesCard.classList.add("card-heading");
-
     titleCard.textContent = title;
     authorCard.textContent = author;
     pagesCard.textContent = pages;
     readToggle.textContent = read;
     deleteButton.textContent = "Delete";
+
+    divCard.classList.add("book-card");
+    titleCard.classList.add("card-heading");
+    authorCard.classList.add("card-heading");
+    pagesCard.classList.add("card-heading");
+
+    if (readToggle.textContent == "Read") {
+        readToggle.classList.add("read-button");
+    } else {
+        readToggle.classList.add("unread-button");
+    }
 
     document.getElementById("books-container").appendChild(divCard);
     divCard.appendChild(titleCard);
@@ -75,7 +81,7 @@ function createCard(title, author, pages, read, deleted) {
     deleteButton.addEventListener("click", deleteBook);
 
     function changeRead() {
-        this.textContent = (this.textContent == "Read") ? "Not read" : "Read";
+        this.textContent = (this.textContent == "Read") ? "Unread" : "Read";
 
         //Change read value in array using array.find()
         let book = myLibrary.find(o => (o.title === title && o.author === author && o.pages === pages));
