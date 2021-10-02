@@ -2,6 +2,8 @@
 
 JavaScript project under The Odin Project
 
-To create a website for a small library
+In this, I've created a small library which allows you to store books
 
-Currently under construction
+I learnt more in detail about event listeners, and using web storage API.
+
+You can view the project here: [Library](https://srivathsannayak.github.io/Library/)
