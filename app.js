@@ -42,6 +42,7 @@ function addBookToLibrary() {
     let read = (document.getElementById("form-read").checked ? "Read" : "Unread");
     const obj = new Book(title, author, pages, read);
     myLibrary.push(obj);
+    populateStorage();
     printBook();
 }
 
@@ -91,6 +92,7 @@ function createCard(title, author, pages, read, deleted) {
         let book = myLibrary.find(o => (o.title === title && o.author === author && o.pages === pages));
         let index = myLibrary.indexOf(book);
         myLibrary[index] = { title, author, pages, read: this.textContent };
+        populateStorage();
         printBook();
     }
 
@@ -100,6 +102,7 @@ function createCard(title, author, pages, read, deleted) {
             let index = myLibrary.indexOf(book);
             myLibrary.splice(index, 1);
         }
+        populateStorage();
         printBook();
     }
 }
@@ -114,3 +117,20 @@ function printBook() {
         createCard(myLibrary[i]["title"], myLibrary[i]["author"], myLibrary[i]["pages"], myLibrary[i]["read"], false);
     }
 }
+
+//To store library array of books in localStorage
+function populateStorage() {
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
+//To check if library array available in localStorage
+function restoreLibrary() {
+    if (!localStorage.myLibrary) {
+        printBook();
+    } else {
+        myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+        printBook();
+    }
+}
+
+restoreLibrary();
